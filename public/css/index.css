@@ -8,6 +8,7 @@ body{
 .ourNavigation{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-bottom: 2px;
 
@@ -50,8 +51,8 @@ body{
 
 
 .menuItems .ourMenuList li a:hover{
-    color: teal;
-    border-bottom: 2px solid teal;
+    color: #287832;
+    border-bottom: 2px solid #287832;
     
 }
 
@@ -66,6 +67,29 @@ body{
     width: 100%;
 }
 
+.breadButton{
+    display: flex;
+
+    margin-right: 20px;
+    
+    align-items: center;
+}
+
+.breadContainer{
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 70px;
+    text-align: center;
+}
+
+.breadButton img{
+    display: inline-block;
+    max-height: 50px;
+    height: 100%;
+    vertical-align: middle;
+    margin: auto;
+}
 
 
 
@@ -86,22 +110,35 @@ body{
 .optionMenu .option a{
     color: black;
     text-decoration: none;
+    transition: 0.5s color ease-in-out;
 }
 
 
 .optionMenu .option{
     line-height: 50px;
     vertical-align: middle;
+    text-align: center;
+    padding: 0 5px;
 }
 
 .optionMenu .option img{
     filter: grayscale(100%);
     vertical-align: middle;
+    padding: 0 5px;
+    transition: 0.5s all ease-in-out;
+}
+
+
+.optionMenu .option:hover a{
+    color: #287832;
 }
 
 .optionMenu .option:hover img{
     filter: none;
 }
+
+
+
 
 
 .optionMenu .option #carImage{
@@ -112,6 +149,32 @@ body{
 
 
 
+.hideMe{
+    display: none;
+}
+
+
+
+
 
 
 /* ================ Media queries ================= */
+
+
+@media (max-width : 1120px){
+
+    /* NAVIGATION MENU */
+
+    /* HIDING NAVIGATION */
+    .menuItems{
+        display: none;
+    }
+
+
+}
+
+
+@media (max-width : 500px){
+    
+    
+}
