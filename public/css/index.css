@@ -1,0 +1,117 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+}
+
+.ourNavigation{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2px;
+
+}
+
+
+
+.menuItems{
+    vertical-align: middle;
+    line-height: 150px;
+}
+
+.menuItems .ourMenuList{
+    height: 130px;
+    display: inline;
+    padding-left: 0;
+    margin: 0 30px 0 30px;
+}
+
+.menuItems .ourMenuList li{
+    display: inline;
+    margin: 0 30px;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+
+.menuItems .ourMenuList li a:link{
+    color: black;
+    text-decoration: none;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    
+    transition: 0.5s all ease-in-out;
+}
+
+.menuItems .ourMenuList li a:visited{
+    color: black;
+}
+
+
+.menuItems .ourMenuList li a:hover{
+    color: teal;
+    border-bottom: 2px solid teal;
+    
+}
+
+
+
+
+.navbarLogo{
+    max-width: 400px;
+}
+
+.navbarLogo #navbarLogoImage{
+    width: 100%;
+}
+
+
+
+
+
+/* =============== OPTION MENU =================*/
+
+.optionMenu{
+
+    display: flex;
+    justify-content: space-around;
+    background-color: #F8F8F8;
+    padding: 0 50px;
+    
+
+}
+
+
+.optionMenu .option a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.optionMenu .option{
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.optionMenu .option img{
+    filter: grayscale(100%);
+    vertical-align: middle;
+}
+
+.optionMenu .option:hover img{
+    filter: none;
+}
+
+
+.optionMenu .option #carImage{
+    min-height: 40px;
+}
+
+
+
+
+
+
+
+/* ================ Media queries ================= */

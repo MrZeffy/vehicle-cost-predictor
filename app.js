@@ -8,9 +8,9 @@ const app = express();
 
 
 // Middlewares
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 
-app.use('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname+'/public'));
 
@@ -18,11 +18,18 @@ app.use(express.static(__dirname+'/public'));
 
 // End-points
 
+app.get('/', (req, res)=>{
+    res.render('index');
+});
 
 
-
+app.get('/favicon.ico', (req, res)=>{
+    console.log("favicon loading");
+});
 
 // Listening
 
-app.listen(3000);
+app.listen(3000, ()=>{
+    console.log("Server has started");
+});
 
