@@ -1,0 +1,114 @@
+/* Text color: #444 */
+
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    color: #444;
+}
+
+.container{
+    background: url('/images/loginBackground.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+
+.formContainer{
+    width: 320px;
+    min-height: 400px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+
+}
+
+.formContainer .ourForm{
+    margin-top: 40px;
+}
+
+.ourForm .formInput{
+    margin: 40px 0;
+    font-size: 20px;
+}
+
+.formInput input{
+    font-size: 20px;
+    color: #444;
+    border: none;
+    outline: none;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+
+.submitButtonContainer{
+    margin-top: 60px;
+}
+
+.submitButtonContainer .submitButton{
+    color: black;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 10px 40px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    
+    border: 1px solid transparent;
+    border-radius: 20px;
+    transition: 0.5s all ease-in-out;
+
+}
+
+
+.submitButtonContainer .submitButton:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #287832 100%);
+
+}
+
+
+
+.aboutSpans{
+	display: inline-block;
+	width: 25%;
+	height: 3px;
+	background-color: black;
+	float: left;
+}
+
+.firstSpanAbout{
+	background-color: red;
+}
+
+.secondSpanAbout{
+	background-color: #f97252;
+}
+
+.thirdSpanAbout{
+	background-color: teal;
+}
+
+
+.fourthSpanAbout{
+	background-color: orange;
+}
+
+
+
+.registerSection{
+    margin-top: 40px;
+}
+

@@ -27,6 +27,11 @@ app.get('/favicon.ico', (req, res)=>{
     console.log("favicon loading");
 });
 
+
+app.get('/loginPage', (req, res)=>{
+    res.render('loginPage');
+});
+
 // Listening
 
 app.listen(3000, ()=>{
