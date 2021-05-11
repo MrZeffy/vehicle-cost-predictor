@@ -32,6 +32,32 @@ app.get('/loginPage', (req, res)=>{
     res.render('loginPage');
 });
 
+
+
+
+app.post('/loginPage', (req, res)=>{
+    let email = req.body['email'];
+    let password = req.body['password'];
+    console.log('LOGIN');
+    console.log(email, password);
+
+
+    // TODO: afte successful login, redirect to home.
+
+    res.send("We are working on it.");
+});
+
+
+app.post('/register', (req, res)=>{
+    
+    let email = req.body['email'];
+    let password = req.body['password'];
+    console.log("register");
+    console.log(email, password);
+    // TODO: Verify email and then redirect to login page after user account creation.
+    res.send("We are working on it.");
+});
+
 // Listening
 
 app.listen(3000, ()=>{
