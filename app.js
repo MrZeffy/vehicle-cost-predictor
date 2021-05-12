@@ -29,14 +29,17 @@ mysqlConnection.connect((err)=>{
 // SETTING UP AND DATABASES AND TABLES.
 
 
-executeQuery('CREATE DATABASE IF NOT EXISTS vmcp_system;', mysqlConnection).then((result)=>{
+// Creating database
+executeQuery('CREATE DATABASE IF NOT EXISTS vmcp_system;', mysqlConnection).then(()=>{
+    // returning another promise, so we can chain 'then' statements.
     return executeQuery('USE vmcp_system;', mysqlConnection)
-}).then((result)=>{
+}).then(()=>{
+    // Creating table with required prototype.
     return executeQuery('CREATE TABLE IF NOT EXISTS ' + 
     'user_credentials(id VARCHAR(100) PRIMARY KEY, ' +
      'email VARCHAR(100) UNIQUE, password VARCHAR(100) ' + 
      'NOT NULL);', mysqlConnection)
-}).then((result)=>{
+}).then(()=>{
     console.log("DATABASE and TABLES setup successful");
 }).catch((err)=>{
     console.log(err);
