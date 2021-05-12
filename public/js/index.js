@@ -4,8 +4,6 @@ let hamBurgerMenuOpen = false;
 let ourVerticalMenu = null;
 
 let sliderBabyContainer = null;
-let sliderLeftArrow
-
 
 let sliderChangeFunction = (function (){
     let sliderCurrentImageCount = 1;
