@@ -1,9 +1,49 @@
 // Importing packages.
 const express = require('express');
 const ejs = require('ejs');
+const mysql = require('mysql');
 
-
+// Setting up Express app.
 const app = express();
+
+
+
+// Creating MySQL connection
+const mysqlConnection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Daman6232'
+});
+
+mysqlConnection.connect((err)=>{
+    if (err) { 
+        console.log(err);
+    }
+    else{
+        console.log('MySQL connected successfully');
+    }
+});
+
+
+
+// SETTING UP AND DATABASES AND TABLES.
+
+
+executeQuery('CREATE DATABASE IF NOT EXISTS vmcp_system;', mysqlConnection).then((result)=>{
+    return executeQuery('USE vmcp_system;', mysqlConnection)
+}).then((result)=>{
+    return executeQuery('CREATE TABLE IF NOT EXISTS ' + 
+    'user_credentials(id VARCHAR(100) PRIMARY KEY, ' +
+     'email VARCHAR(100) UNIQUE, password VARCHAR(100) ' + 
+     'NOT NULL);', mysqlConnection)
+}).then((result)=>{
+    console.log("DATABASE and TABLES setup successful");
+}).catch((err)=>{
+    console.log(err);
+});
+
+
+
 
 
 
@@ -64,3 +104,19 @@ app.listen(3000, ()=>{
     console.log("Server has started");
 });
 
+
+
+
+// Wrapping query function in Promise.
+
+function executeQuery(query, connection){
+    return new Promise((resolve, reject)=>{
+        connection.query(query, (err, res)=>{
+            if(err){
+                reject(err);
+            }else{
+                resolve(res);
+            }
+        });
+    });
+}
