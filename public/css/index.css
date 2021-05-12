@@ -91,6 +91,18 @@ body{
     margin: auto;
 }
 
+.verticalMenu{
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s all ease-in-out;
+}
+
+.verticalMenuVisible{
+    
+    max-height: 300px;
+    
+}
+
 
 
 

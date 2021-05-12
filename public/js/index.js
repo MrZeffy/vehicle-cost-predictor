@@ -1,9 +1,14 @@
-let ourHamburgerContainer = null;
+let ourHamburger = null;
 let navbarLogo = null;
+let hamBurgerMenuOpen = false;
+let ourVerticalMenu = null;
 document.addEventListener('DOMContentLoaded', ()=>{
     
     ourHamburger = document.getElementsByClassName('breadButton')[0];
     navbarLogo = document.getElementById('navbarLogoImage');
+    ourVerticalMenu = document.getElementsByClassName('verticalMenu')[0];
+
+    ourHamburger.addEventListener('click', toggleMenu);
     checkWidthForBurger();
     
     
@@ -12,6 +17,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     
 });
+
+
+function toggleMenu(event){
+    if(!hamBurgerMenuOpen){
+        ourVerticalMenu.classList.add('verticalMenuVisible');
+        event.target.src = '/images/hamburgerActive.png';
+        hamBurgerMenuOpen = true;
+    }else{
+        ourVerticalMenu.classList.remove('verticalMenuVisible');
+        event.target.src = '/images/hamburger.png';
+        hamBurgerMenuOpen = false;
+    }
+}
 
 
 function checkWidthForBurger(){
