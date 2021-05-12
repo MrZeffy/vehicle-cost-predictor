@@ -2,9 +2,11 @@
 const express = require('express');
 const ejs = require('ejs');
 const mysql = require('mysql');
-
-// Setting up Express app.
-const app = express();
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 
 
@@ -48,14 +50,71 @@ executeQuery('CREATE DATABASE IF NOT EXISTS vmcp_system;', mysqlConnection).then
 
 
 
+// Setting up passportjs for sessions
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    password: 'password',
+},(email, password, done) => {
+    executeQuery(`SELECT * FROM user_credentials WHERE email="${email}"`)
+    .then((result)=>{
+        if(result.length === 0){
+            throw "Error";
+        }else{
+            bcrypt.compare(password, result[0].password, (err, same)=>{
+                if(err){
+                    throw "Error";
+                }else if(same){
+                    done(null, result[0]);
+                }
+            })
+        }     
+    }).catch((err)=>{
+        done(null, false, {messsage: err});
+    })
+}));
+
+
+passport.serializeUser((user, done)=>{
+    done(null, user.id);
+});
+
+passport.deserializeUser((userId, done)=>{
+    executeQuery(`SELECT * FROM user_credentials WHERE id="${userId}"`, mysqlConnection)
+    .then((result)=>{
+        done(null, result[0]);
+    })
+    .catch((err)=>{
+        done(err, false);
+    })
+});
+
+
+
+// Setting up Express app.
+const app = express();
+
 
 
 // Middlewares
 app.use(express.urlencoded({extended: false}));
 
+app.use(cookieParser());
+
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname+'/public'));
+
+
+app.use(session({
+    secret: 'ourLittleSecretKey',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
 
 
 
