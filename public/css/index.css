@@ -91,17 +91,50 @@ body{
     margin: auto;
 }
 
+
+/* Vertical Menu CSS */
 .verticalMenu{
     max-height: 0;
     overflow: hidden;
     transition: 0.3s all ease-in-out;
 }
 
+
+
+.verticalMenu ul{
+    list-style: none;
+}
+
+.verticalMenu ul li{
+    text-align: center;
+    padding: 10px 0;
+    
+}
+
+.verticalMenu ul li a:link{
+    color: #444;
+    text-decoration: none;
+}
+
+
+.verticalMenu ul li a:visited{
+    color: #444;
+}
+
+
+.verticalMenu ul li a:hover, .verticalMenu ul li a:active{
+    color: #287832
+}
+
+
 .verticalMenuVisible{
     
     max-height: 300px;
     
 }
+
+
+
 
 
 
@@ -165,6 +198,50 @@ body{
     display: none;
 }
 
+
+
+
+/* =============FULL SCREEN SLIDER================= */
+
+
+.sliderBabyContainer{
+    width: 100%;
+    min-height: 500px;
+    background-color: #F8F8F8;
+    background: url('/images/sliderImages/1.jpg') no-repeat;
+    position: relative;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.sliderBaby2{
+    background: url('/images/sliderImages/2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.sliderBaby3{
+    background: url('/images/sliderImages/3.jpg') no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.sliderBabyContainer .leftArrow, .sliderBabyContainer .rightArrow{
+    color: white;
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.leftArrow{
+    left: 1%;
+}
+
+.rightArrow{
+    right: 1%;
+}
 
 
 

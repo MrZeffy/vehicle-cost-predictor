@@ -2,11 +2,55 @@ let ourHamburger = null;
 let navbarLogo = null;
 let hamBurgerMenuOpen = false;
 let ourVerticalMenu = null;
+
+let sliderBabyContainer = null;
+let sliderLeftArrow
+
+
+let sliderChangeFunction = (function (){
+    let sliderCurrentImageCount = 1;
+    return (function (next){
+        if(sliderCurrentImageCount != 1){
+            sliderBabyContainer.classList.remove(`sliderBaby${sliderCurrentImageCount}`);
+        }
+
+        if(next){
+
+            sliderCurrentImageCount += 1;
+            if(sliderCurrentImageCount > 3){
+                sliderCurrentImageCount = 1;
+            }
+        }else{
+            sliderCurrentImageCount -= 1;
+            if(sliderCurrentImageCount < 1){
+                sliderCurrentImageCount = 3;
+            }
+        }
+
+        if(sliderCurrentImageCount != 1){
+            sliderBabyContainer.classList.add(`sliderBaby${sliderCurrentImageCount}`);
+        }
+
+    });
+})();
+
+
 document.addEventListener('DOMContentLoaded', ()=>{
     
     ourHamburger = document.getElementsByClassName('breadButton')[0];
     navbarLogo = document.getElementById('navbarLogoImage');
     ourVerticalMenu = document.getElementsByClassName('verticalMenu')[0];
+    sliderBabyContainer = document.getElementsByClassName('sliderBabyContainer')[0];
+    
+    document.getElementsByClassName('leftArrow')[0].addEventListener('click', ()=>{
+        sliderChangeFunction(false);
+    });
+
+    document.getElementsByClassName('rightArrow')[0].addEventListener('click', () => {
+        sliderChangeFunction(true);
+    });
+
+
 
     ourHamburger.addEventListener('click', toggleMenu);
     checkWidthForBurger();
