@@ -123,7 +123,10 @@ app.use(passport.session());
 // End-points
 
 app.get('/', (req, res)=>{
-    res.render('index');
+    if(req.isAuthenticated()){
+        return res.render('index', {loggedIn: true});
+    }
+    res.render('index', {loggedIn: false});
 });
 
 
@@ -156,6 +159,15 @@ app.post('/register', (req, res)=>{
         res.send('OOPS!! something went wrong');
     });
 });
+
+
+app.get('/logout', (req, res)=>{
+    req.logout();
+    res.redirect('/');
+})
+
+
+
 
 // Listening
 

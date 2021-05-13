@@ -48,9 +48,25 @@
                     <li>
                         <a href="/contact">Contact</a>
                     </li>
-                    <li>
-                        <a href="/loginPage">Login/Sign Up</a>
-                    </li>
+                    <% if(loggedIn){ %>
+                        <li class="loggedInItem">
+                            <button><i class="fas fa-user"></i></button>
+                            <div class="userOptionsContainer hideMe">
+                                <!-- User options -->
+                                <ul class="userOptions">
+                                    <li>
+                                        <a href="#">Your profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout">logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                    <% } else{ %>
+                        <li><a href="/loginPage">Login/Sign Up</a></li>
+                    <% } %>
                 </ul>
             </div>
 

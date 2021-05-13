@@ -28,7 +28,7 @@ body{
     margin: 0 30px 0 30px;
 }
 
-.menuItems .ourMenuList li{
+.menuItems .ourMenuList > li{
     display: inline;
     margin: 0 30px;
     font-size: 25px;
@@ -36,7 +36,7 @@ body{
 }
 
 
-.menuItems .ourMenuList li a:link{
+.menuItems .ourMenuList > li > a:link{
     color: black;
     text-decoration: none;
     padding-bottom: 5px;
@@ -45,12 +45,12 @@ body{
     transition: 0.5s all ease-in-out;
 }
 
-.menuItems .ourMenuList li a:visited{
+.menuItems .ourMenuList > li > a:visited{
     color: black;
 }
 
 
-.menuItems .ourMenuList li a:hover{
+.menuItems .ourMenuList > li > a:hover{
     color: #287832;
     border-bottom: 2px solid #287832;
     
@@ -105,7 +105,7 @@ body{
     list-style: none;
 }
 
-.verticalMenu ul li{
+.verticalMenu ul > li{
     text-align: center;
     padding: 10px 0;
     
@@ -132,6 +132,64 @@ body{
     max-height: 300px;
     
 }
+
+
+
+/* User options for logged in users */
+.loggedInItem{
+    position: relative;
+}
+
+
+
+.loggedInItem button{
+    border: none;   
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.userOptionsContainer{
+    position: absolute;
+    bottom: -80px;
+    /* height: 100px; */
+    right: 0;
+    background-color: #F8F8F8;
+    line-height: normal;
+    width: 200px;
+    
+}
+
+ul.userOptions{
+    padding: 0;
+    list-style: none;
+    width: 200px;
+}
+
+ul.userOptions li{
+    display: block;
+    text-align: center;
+    width: 200px;
+    font-size: 18px;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(100, 100, 111, 0.2);
+
+}
+
+ul.userOptions li a:link, ul.userOptions li a:visited{
+    color: #444;
+    text-decoration: none;
+}
+
+
+
+ul.userOptions li a:hover{
+    color: #287832;
+}
+
+
+
 
 
 
