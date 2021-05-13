@@ -56,7 +56,7 @@ passport.use(new LocalStrategy({
     usernameField: 'email',
     password: 'password',
 },(email, password, done) => {
-    executeQuery(`SELECT * FROM user_credentials WHERE email="${email}"`)
+    executeQuery(`SELECT * FROM user_credentials WHERE email="${email}"`, mysqlConnection)
     .then((result)=>{
         if(result.length === 0){
             throw "Error";
@@ -70,6 +70,7 @@ passport.use(new LocalStrategy({
             })
         }     
     }).catch((err)=>{
+        console.log(err);
         done(null, false, {messsage: err});
     })
 }));
@@ -137,27 +138,23 @@ app.get('/loginPage', (req, res)=>{
 
 
 
-app.post('/loginPage', (req, res)=>{
-    let email = req.body['email'];
-    let password = req.body['password'];
-    console.log('LOGIN');
-    console.log(email, password);
-
-
-    // TODO: afte successful login, redirect to home.
-
-    res.send("We are working on it.");
-});
+app.post('/loginPage', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/loginPage'
+}));
 
 
 app.post('/register', (req, res)=>{
     
     let email = req.body['email'];
     let password = req.body['password'];
-    console.log("register");
-    console.log(email, password);
-    // TODO: Verify email and then redirect to login page after user account creation.
-    res.send("We are working on it.");
+    
+    registerUserIntoDatabase(email, password).then(()=>{
+        res.send('Your account has been registered successfully');
+    }).catch((err)=>{
+        console.log(err);
+        res.send('OOPS!! something went wrong');
+    });
 });
 
 // Listening
@@ -181,4 +178,24 @@ function executeQuery(query, connection){
             }
         });
     });
+}
+
+
+
+// Registering user in Database and returning a promise
+
+
+function registerUserIntoDatabase(email, password){
+
+    return new Promise((resolve, reject)=>{
+        const id = Date.now().toString();
+        bcrypt.hash(password, 10).then((encryptedPassword) => {
+            return executeQuery(`INSERT INTO user_credentials VALUES ("${id}", "${email}", "${encryptedPassword}");`, mysqlConnection);
+        }).then(() => {
+            resolve();
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+
 }
