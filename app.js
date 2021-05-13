@@ -7,6 +7,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const e = require('express');
 
 
 
@@ -131,7 +132,7 @@ app.get('/favicon.ico', (req, res)=>{
 });
 
 
-app.get('/loginPage', (req, res)=>{
+app.get('/loginPage', checkIfLoggedIn ,(req, res)=>{
     res.render('loginPage');
 });
 
@@ -148,7 +149,6 @@ app.post('/register', (req, res)=>{
     
     let email = req.body['email'];
     let password = req.body['password'];
-    
     registerUserIntoDatabase(email, password).then(()=>{
         res.send('Your account has been registered successfully');
     }).catch((err)=>{
@@ -198,4 +198,23 @@ function registerUserIntoDatabase(email, password){
         });
     });
 
+}
+
+
+
+// Check if loggedIn middleware
+
+function checkIfLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        if(req.path === '/loginPage'){
+            return res.redirect('/');
+        }else{
+            return next();
+        }
+    }else{
+        if (req.path === '/loginPage') {
+            return next()
+        }
+        res.render('/loginPage');
+    }
 }
