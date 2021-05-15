@@ -4,7 +4,10 @@ let hamBurgerMenuOpen = false;
 let ourVerticalMenu = null;
 
 let sliderBabyContainer = null;
+let sliderMover = null;
 
+
+// Slider image change closure.
 let sliderChangeFunction = (function (){
     let sliderCurrentImageCount = 1;
     return (function (next){
@@ -39,6 +42,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     navbarLogo = document.getElementById('navbarLogoImage');
     ourVerticalMenu = document.getElementsByClassName('verticalMenu')[0];
     sliderBabyContainer = document.getElementsByClassName('sliderBabyContainer')[0];
+
+    sliderBabyContainer.addEventListener('mouseover', stopAutoSlider);
+    sliderBabyContainer.addEventListener('mouseout', ()=>{
+        sliderMover = sliderAutoStart();
+    })
+
+
     
     document.getElementsByClassName('leftArrow')[0].addEventListener('click', ()=>{
         sliderChangeFunction(false);
@@ -47,6 +57,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementsByClassName('rightArrow')[0].addEventListener('click', () => {
         sliderChangeFunction(true);
     });
+
+
+    // Automatic slider move.
+
+    sliderMover = sliderAutoStart();
+
+    
 
 
 
@@ -61,6 +78,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
+let sliderAutoStart = () => {
+    return setInterval(() => {
+        sliderChangeFunction(true)
+    }, 3000);
+}
+
+
+let stopAutoSlider = ()=>{
+    if(sliderMover){
+        clearInterval(sliderMover);
+        sliderMover = null;
+    }
+}
+
+// Toggles vertical menu on hamburger click
+
 function toggleMenu(event){
     if(!hamBurgerMenuOpen){
         ourVerticalMenu.classList.add('verticalMenuVisible');
@@ -74,6 +107,7 @@ function toggleMenu(event){
 }
 
 
+// Enables burger button while checking burger button
 function checkWidthForBurger(){
 
     if(window.innerWidth <= 500){

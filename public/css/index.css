@@ -5,6 +5,10 @@ body{
     font-size: 20px;
 }
 
+
+
+/* ================================ Navigation bar ============================================= */
+
 .ourNavigation{
     display: flex;
     justify-content: space-between;
@@ -139,7 +143,7 @@ body{
 
 
 
-/* =============== OPTION MENU =================*/
+/*=========================================== OPTION MENU =====================================================*/
 
 .optionMenu{
 
@@ -201,17 +205,37 @@ body{
 
 
 
-/* =============FULL SCREEN SLIDER================= */
+/* ========================================FULL SCREEN SLIDER===================================== */
+
+
 
 
 .sliderBabyContainer{
+    position: relative;
     width: 100%;
     min-height: 500px;
     background-color: #F8F8F8;
     background: url('/images/sliderImages/1.jpg') no-repeat;
     position: relative;
-    background-size: 100%;
+    background-size: cover;    
     background-position: center center;
+    transition: 0.4s background ease;
+}
+
+
+
+.blackOverlaySlider{
+    position: absolute;
+    /* top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+    width: inherit;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.6);
+
 }
 
 .sliderBaby2{
@@ -223,7 +247,7 @@ body{
 
 .sliderBaby3{
     background: url('/images/sliderImages/3.jpg') no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-position: center center;
 }
 
@@ -233,6 +257,27 @@ body{
     font-size: 30px;
     top: 50%;
     transform: translate(0, -50%);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: 0.2s all ease-in-out;
+
+}
+
+.sliderBabyContainer div i{
+    padding: 5px;
+}
+
+.sliderBabyContainer .leftArrow:hover, .sliderBabyContainer .rightArrow:hover{
+
+    border: 1px solid #287832;
+    background-color: #287832;
+    color: white;
+
+    box-shadow: 0 2px 5px 2px #44444528;
+
+    
+
 }
 
 .leftArrow{
@@ -244,6 +289,52 @@ body{
 }
 
 
+.textBlockOnSlider{
+
+    color: white;
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+.textBlockOnSlider .sliderButtonContainer{
+    text-align: center;
+
+}
+
+.textBlockOnSlider .sliderButtonContainer button{
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    outline: none;
+    padding: 10px;
+    font-size: 25px;
+    transition: 0.4s all ease-in-out;
+    border-radius: 8px;
+    
+}
+
+.textBlockOnSlider .sliderButtonContainer button:last-child:hover{
+    color: #444;
+    background-color: white;
+    
+}
+
+.textBlockOnSlider .sliderButtonContainer button:first-child{
+    border-color: #287832;
+    background-color: #287832;
+
+}
+
+.textBlockOnSlider .sliderButtonContainer button:first-child:hover{
+    background-color: #1d5725;
+    border-color: #1d5725;
+    
+}
 
 
 
@@ -262,6 +353,18 @@ body{
 
 }
 
+
+@media screen and (max-width : 920px){
+    .sliderBabyContainer{
+        min-height: 400px;
+    }
+}
+
+@media screen and (max-width : 620px){
+    .sliderBabyContainer{
+        min-height: 300px;
+    }
+}
 
 @media (max-width : 500px){
     
