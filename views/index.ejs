@@ -48,9 +48,24 @@
                     <li>
                         <a href="/contact">Contact</a>
                     </li>
-                    <li>
-                        <a href="/loginPage">Login/Sign Up</a>
-                    </li>
+                    <% if(loggedIn){ %>
+                        <li class="loggedInItem">
+                            <button><i class="fas fa-user"></i></button>
+                            <div class="userOptionsContainer hideMe">
+                                <!-- User options -->
+                                <ul class="userOptions">
+                                    <li>
+                                        <a href="#">Your profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout">logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>                    
+                    <% } else{ %>
+                        <li><a href="/loginPage">Login/Sign Up</a></li>
+                    <% } %>
                 </ul>
             </div>
 
@@ -99,6 +114,19 @@
         <!-- FullScreen slider -->
         <div class="sliderContainer">
             <div class="sliderBabyContainer">
+
+                <!-- Black overlay for images -->
+                <div class="blackOverlaySlider"></div>
+
+                <div class="textBlockOnSlider">
+                    <p>Let's manage your vehicle's expenses together.</p>
+                    <div class="sliderButtonContainer">
+                        <button>Cost Predictor</button>                        
+                        <button>Expenses Calculator</button>
+                    </div>
+                </div>
+
+                <!-- Slider arrows -->
                 <div class="leftArrow">
                     <i class="fas fa-arrow-left"></i>
                 </div>
