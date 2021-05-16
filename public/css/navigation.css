@@ -1,0 +1,160 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+}
+
+
+
+
+
+/* ================================ Navigation bar ============================================= */
+
+.ourNavigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2px;
+
+}
+
+
+
+.menuItems{
+    vertical-align: middle;
+    line-height: 150px;
+}
+
+.menuItems .ourMenuList{
+    height: 130px;
+    display: inline;
+    padding-left: 0;
+    margin: 0 30px 0 30px;
+}
+
+.menuItems .ourMenuList li{
+    display: inline;
+    margin: 0 30px;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+
+.menuItems .ourMenuList li a:link{
+    color: black;
+    text-decoration: none;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    
+    transition: 0.5s all ease-in-out;
+}
+
+.menuItems .ourMenuList li a:visited{
+    color: black;
+}
+
+
+.menuItems .ourMenuList li a:hover{
+    color: #287832;
+    border-bottom: 2px solid #287832;
+    
+}
+
+
+
+
+.navbarLogo{
+    max-width: 400px;
+}
+
+.navbarLogo #navbarLogoImage{
+    width: 100%;
+}
+
+.breadButton{
+    display: flex;
+
+    margin-right: 20px;
+    
+    align-items: center;
+}
+
+.breadContainer{
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 70px;
+    text-align: center;
+}
+
+.breadButton img{
+    display: inline-block;
+    max-height: 50px;
+    height: 100%;
+    vertical-align: middle;
+    margin: auto;
+}
+
+
+/* Vertical Menu CSS */
+.verticalMenu{
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s all ease-in-out;
+}
+
+
+
+.verticalMenu ul{
+    list-style: none;
+}
+
+.verticalMenu ul li{
+    text-align: center;
+    padding: 10px 0;
+    
+}
+
+.verticalMenu ul li a:link{
+    color: #444;
+    text-decoration: none;
+}
+
+
+.verticalMenu ul li a:visited{
+    color: #444;
+}
+
+
+.verticalMenu ul li a:hover, .verticalMenu ul li a:active{
+    color: #287832
+}
+
+
+.verticalMenuVisible{
+    
+    max-height: 300px;
+    
+}
+
+
+
+.hideMe{
+    display: none;
+}
+
+
+
+@media (max-width : 1120px){
+
+    /* NAVIGATION MENU */
+
+    /* HIDING NAVIGATION */
+    .menuItems{
+        display: none;
+    }
+
+
+}
