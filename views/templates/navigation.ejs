@@ -1,0 +1,47 @@
+<!-- Navigation menu -->
+<nav class="ourNavigation">
+    <div class="navbarLogo">
+        <img src="images/logo-navbar.png" alt="navbar-logo" id="navbarLogoImage">
+    </div>
+
+    <!-- Hamburger menu for smaller screens -->
+    <div class="breadButton hideMe">
+        <div class="burgerContainer">
+            <img src="/images/hamburger.png" alt="" class="hamburger" id="myHamburger">
+        </div>
+    </div>
+
+    <!-- Menu items -->
+    <div class="menuItems">
+        <ul class="ourMenuList">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+            <% if(loggedIn){ %>
+                <li class="loggedInItem">
+                    <button><i class="fas fa-user"></i></button>
+                    <div class="userOptionsContainer hideMe">
+                        <!-- User options -->
+                        <ul class="userOptions">
+                            <li>
+                                <a href="#">Your profile</a>
+                            </li>
+                            <li>
+                                <a href="/logout">logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <% } else{ %>
+                    <li><a href="/loginPage">Login/Sign Up</a></li>
+                    <% } %>
+        </ul>
+    </div>
+
+</nav>

@@ -32,6 +32,12 @@ app.get('/loginPage', (req, res)=>{
     res.render('loginPage');
 });
 
+app.get('/profile', (req, res)=>{
+    res.render('profile', {loggedIn: false});
+
+    // TODO: LoggedIn Check.
+})
+
 
 
 
